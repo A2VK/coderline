@@ -31,19 +31,19 @@ private| Y | N | N | N | N
 
 > 接口里的变量都隐式声明为 public static final,而接口里的方法默认情况下访问权限为 public
 
-**继承访问权限：**
-- 父类中声明为 public 的方法在子类中也必须为 public
-- 父类中声明为 protected 的方法在子类中要么声明为 protected，要么声明为 public，不能声明为 private
-- 父类中声明为 private 的方法，不能够被继承
+*继承访问权限：*
+   - 父类中声明为 public 的方法在子类中也必须为 public
+   - 父类中声明为 protected 的方法在子类中要么声明为 protected，要么声明为 public，不能声明为 private
+   - 父类中声明为 private 的方法，不能够被继承
 
-**static 修饰符：**
+*static 修饰符：*
    > 被 static 修饰的变量及代码片段 将被JVM 在启动时加载到静态存储区
    - 静态变量：
         > static 关键字用来声明独立于对象的静态变量，无论一个类实例化多少对象，它的静态变量只有一份拷贝。 静态变量也被称为类变量。局部变量不能被声明为 static 变量
    - 静态方法：
         > static 关键字用来声明独立于对象的静态方法。静态方法不能使用类的非静态变量。静态方法从参数列表得到数据，然后计算这些数据
 
-**final 修饰符：**
+*final 修饰符：*
 
    - final 变量
         > 变量一旦赋值后，不能被重新赋值 所以 被 final 修饰的实例变量必须显式指定初始值
@@ -55,7 +55,7 @@ private| Y | N | N | N | N
    - final 类
         > final 类不能被继承
 
-**abstract 修饰符：**
+*abstract 修饰符：*
    - 抽象类
         - 抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充
         - 一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误
@@ -68,12 +68,12 @@ private| Y | N | N | N | N
         - 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类。抽象类可以不包含抽象方法
         - 抽象方法的声明以分号结尾：public abstract sample();
 
-**transient 修饰符:**
+*transient 修饰符:*
 
-**synchronized 修饰符:**
+*synchronized 修饰符:*
    > 线程安全修饰符 
     
-**volatile 修饰符:**
+*volatile 修饰符:*
    > volatile 修饰的变量发生变更时，JVM会强制更新此变量在内存共享区的值
    
 <br>
