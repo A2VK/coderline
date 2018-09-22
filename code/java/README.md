@@ -143,13 +143,13 @@ private| Y | N | N | N | N
     
 - ** 局部变量: **
     ```java
-    public class People {
-      private String iCode;
-      public void reCode(String code) {
-        int len = 0;
-        this.iCode = code;
-    }
-  }
+        public class People {
+          private String iCode;
+          public void reCode(String code) {
+            int len = 0;
+            this.iCode = code;
+        }
+      }
     ```
     - 局部变量声明在方法、构造方法或者语句块中
     - 局部变量在方法、构造方法、或者语句块被执行的时候创建，当它们执行完成后，变量将会被销毁
@@ -203,6 +203,9 @@ private| Y | N | N | N | N
 - boolean类型无法类型转换
 - 对象类型转换需要关联性
 - 在把容量大的类型转换为容量小的类型时必须使用强制类型转换（精度溢出/损失）
+
+##### 异常
+
 
 ### 面向对象 
 
