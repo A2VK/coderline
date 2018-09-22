@@ -81,7 +81,7 @@ private| Y | N | N | N | N
 ##### 变量申明类型
 
 - 被常量修饰时在运行时无法修改  final 修饰
-- ** 变量类型: **
+- *变量类型:*
     ```java
     
   public class People {
@@ -99,7 +99,7 @@ private| Y | N | N | N | N
     - 局部变量：类的方法中的变量
     <br/><br/>
  
-- ** 类变量（静态变量）**
+- *类变量（静态变量*
     ```java
     public class People {
         final static int MARK = 10000;
@@ -119,7 +119,7 @@ private| Y | N | N | N | N
     - 类变量被声明为public static final类型时，类变量名称一般建议使用大写字母。如果静态变量不是public和final类型，其命名方式与实例变量以及局部变量的命名方式一致
     <br/><br/>
 
-- ** 实例变量 **
+- *实例变量*
     ```java
         public class People {
               private String name; // 实例变量
@@ -141,7 +141,7 @@ private| Y | N | N | N | N
     - 实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObjectReference.VariableName
     <br/><br/>
     
-- ** 局部变量: **
+- *局部变量:*
     ```java
         public class People {
           private String iCode;
@@ -204,9 +204,53 @@ private| Y | N | N | N | N
 - 对象类型转换需要关联性
 - 在把容量大的类型转换为容量小的类型时必须使用强制类型转换（精度溢出/损失）
 
-##### 异常
+##### *异常 Exception*
 
+    ├─ Throwable
+    │  ├─ Error
+    │  └─ Exception
+    │     ├─ IOException
+    │     └─ RuntimeException
 
+   - 异常分类
+       - JVM(Java虚拟机) 异常：由 JVM 抛出的异常或错误。
+           > NullPointerException 类，ArrayIndexOutOfBoundsException 类，ClassCastException 类
+       - 程序级异常：由程序或者API程序抛出的异常。
+           > IllegalArgumentException 类，IllegalStateException 类
+
+   - 捕获异常
+   ```java
+   public class People{
+       public int getAge(){
+           try{ 
+               int age = 0;
+           }catch( AException e){
+               // 异常处理代码
+           }catch( BException b){ // 捕获应注意异常范围，从小到大依次捕获
+               // 异常处理代码
+           }
+       }
+   }
+
+```
+   
+   - throws/throw 关键字：
+       - 方法签名声名抛出异常类型 
+            > void funcName() throws Exception{}
+       - 抛出异常关键字 
+            > throw new RemoteException("Remote error");
+   
+   - finally关键字
+       - finally 关键字用来创建在 try 代码块后面执行的代码块
+       - 无论是否发生异常，finally 代码块中的代码总会被执行
+       - 在 finally 代码块中，可以运行清理类型等收尾善后性质的语句
+       - finally 代码块出现在 catch 代码块最后
+       
+   - 自定义异常
+       - 所有异常都必须是 Throwable 的子类
+       - 如果希望写一个检查性异常类，则需要继承 Exception 类
+       - 如果你想写一个运行时异常类，那么需要继承 RuntimeException 类
+   
 ### 面向对象 
 
 ### 集合框架（数据结构）
