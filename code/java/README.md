@@ -76,6 +76,15 @@ private| Y | N | N | N | N
 *volatile 修饰符:*
    > volatile 修饰的变量发生变更时，JVM会强制更新此变量在内存共享区的值
    
+**final,finally,finalize的不同：**
+   - final
+       - 最终含义，被final修饰的class无法被继承，修饰方法不可被充写，修饰变量无法被修改
+   - finally
+       - 除了程序在代码块内声明信号量退出，否则一定会被执行的代码块，一般用来关闭资源，保证 unlock锁操作等，但不要在 finally中 return程序返回
+   - finalize
+       - 向JVM 的 GC 申明 需要清理的对象，无法保证 GC何时清理，影响程序性能，在java9中已被废弃
+
+
 <br>
 
 ##### 变量申明类型
@@ -210,15 +219,29 @@ private| Y | N | N | N | N
     │  ├─ Error
     │  └─ Exception
     │     ├─ IOException
-    │     └─ RuntimeException
+    │     ├─ RuntimeException
+    │     └─ ...
+
+   - Error(错误)
+       - Error类一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误，内存空间不足，方法调用栈溢出等
+   
+   - Exception(异常) 
+       - 程序运行过程中可以被预料的情况，可以被捕获并处理
 
    - 异常分类
-       - JVM(Java虚拟机) 异常：由 JVM 抛出的异常或错误。
+       - 运行时异常（Runtime Exception）没有用try……catch捕获，也没有用throws抛出，编译可通过
            > NullPointerException 类，ArrayIndexOutOfBoundsException 类，ClassCastException 类
-       - 程序级异常：由程序或者API程序抛出的异常。
-           > IllegalArgumentException 类，IllegalStateException 类
+       - 受检查的异常(Checked Exception) 如果没有try……catch也没有throws抛出，编译无法通过
+          > IllegalArgumentException 类，IllegalStateException 类
 
    - 捕获异常
+       - 异常处理逻辑(Throw early, catch late 原则)
+           - 尽量不要捕获类似 Exception 这样的通用异常，异常捕获尽量从小到大的范围捕获
+           - 不要忽略异常（NO: 捕获后，不做任何处理）
+       - 大量异常捕获时，对系统性能影响较大
+       - Exception 实例化时，java会对栈进行快照
+       - Functional programming 无法使用 try catch 机制
+       
    ```java
    public class People{
        public int getAge(){
@@ -251,6 +274,9 @@ private| Y | N | N | N | N
        - 如果希望写一个检查性异常类，则需要继承 Exception 类
        - 如果你想写一个运行时异常类，那么需要继承 RuntimeException 类
    
+##### **Exception和Error有什么区别？**
+
+
 ### 面向对象 
 
 ### 集合框架（数据结构）
